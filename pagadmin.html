@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Estoque - Funerária</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- Font Awesome para ícones -->
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Gerenciamento de Estoque</h1>
+            <div class="search-filter">
+                <input type="text" id="search" placeholder="Pesquisar produto..." onkeyup="searchTable()">
+                <select id="filter-category" onchange="filterTable()">
+                    <option value="">Categoria</option>
+                    <option value="caixão">Caixão</option>
+                    <option value="flor">Flor</option>
+                    <option value="decoração">Decoração</option>
+                    <option value="serviço">Serviço</option>
+                </select>
+            </div>
+        </header>
+
+        <table id="stock-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Produto</th>
+                    <th>Categoria</th>
+                    <th>Quantidade</th>
+                    <th>Preço</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="tabela">
+                
+                <!--
+                <tr>
+                    <td>1</td>
+                    <td>Caixão Simples</td>
+                    <td>Caixão</td>
+                    <td>5</td>
+                    <td>R$ 1.200,00</td>
+                    <td>
+                        <button class="btn-edit">Editar</button>
+                        <button class="btn-delete">Excluir</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Flor de Lisianto</td>
+                    <td>Flor</td>
+                    <td>10</td>
+                    <td>R$ 80,00</td>
+                    <td>
+                        <button class="btn-edit">Editar</button>
+                        <button class="btn-delete">Excluir</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Decoração Floral</td>
+                    <td>Decoração</td>
+                    <td>7</td>
+                    <td>R$ 250,00</td>
+                    <td>
+                        <button class="btn-edit">Editar</button>
+                        <button class="btn-delete">Excluir</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Serviço de Sepultamento</td>
+                    <td>Serviço</td>
+                    <td>3</td>
+                    <td>R$ 3.000,00</td>
+                    <td>
+                        <button class="btn-edit">Editar</button>
+                        <button class="btn-delete">Excluir</button>
+                    </td>
+                </tr> -->
+            </tbody>
+        </table>
+
+        <button onclick="window.location.href='admin.html'" class="btn-back">Voltar para Admin</button>
+
+        <footer>
+            <p>Todos os direitos reservados - Funerária XYZ</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script> <!-- Linkando o arquivo JavaScript -->
+</body>
+
+</html>

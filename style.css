@@ -1,0 +1,152 @@
+/* Importando as fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Radley&family=Montserrat:wght@400;600&display=swap');
+
+/* Estilos anteriores para o layout e botões */
+
+body {
+    font-family: 'Montserrat', sans-serif; /* Aplica a fonte Montserrat ao corpo */
+    background-color: #f4f7fa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background-color: #458D68;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-family: 'Radley', cursive; /* Aplica a fonte Radley ao título */
+    margin: 0;
+    font-size: 36px;
+}
+
+.search-filter {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.search-filter input, .search-filter select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    width: 200px;
+    transition: 0.3s;
+}
+
+.search-filter input:focus, .search-filter select:focus {
+    outline: none;
+    border-color: #458D68;
+}
+
+/* Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    animation: fadeIn 1s ease-in-out;
+}
+
+table th, table td {
+    padding: 12px 10px; /* Ajuste no padding das células da tabela */
+    text-align: left;
+    font-size: 16px;
+}
+
+table th {
+    background-color: #458D68;
+    color: #fff;
+}
+
+table td {
+    border-bottom: 1px solid #ddd;
+}
+
+/* Estilo dos botões de ação (Editar/Excluir) */
+button {
+    padding: 8px 15px;
+    margin: 0 5px; /* Espaço entre os botões */
+    background-color: #458D68;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out;
+}
+
+/* Hover para botões de ação */
+button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px); /* Efeito de movimento para cima */
+}
+
+/* Estilo para botões de excluir */
+.btn-delete {
+    background-color: #e74c3c; /* Cor vermelha para excluir */
+}
+
+.btn-delete:hover {
+    background-color: #c0392b; /* Cor vermelha mais escura no hover */
+}
+
+/* Estilo para botões de editar */
+.btn-edit {
+    background-color: #2ecc71; /* Cor verde para editar */
+}
+
+.btn-edit:hover {
+    background-color: #27ae60; /* Cor verde mais escura no hover */
+}
+
+/* Estilo para o botão de voltar */
+.btn-back {
+    padding: 10px 20px;
+    background-color: #2ecc71; /* Cor verde */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px; /* Ajuste a margem conforme necessário */
+    transition: background-color 0.3s ease;
+}
+
+/* Hover para o botão de voltar */
+.btn-back:hover {
+    background-color: #27ae60; /* Cor verde mais escura no hover */
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+footer {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    margin-top: 30px;
+}
