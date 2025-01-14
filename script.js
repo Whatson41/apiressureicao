@@ -44,30 +44,76 @@ document.getElementById('filter-category').addEventListener('blur', function () 
 const tabelaHTML = document.getElementById("tabela")
 console.log(tabelaHTML)
 
-var listaProdutos = [
-    { nome: "Caixao Simples", descricao: "Caixao", qtde: 5, preco: 1200 },
-    { nome: "Caixao Top", descricao: "Caixao", qtde: 5, preco: 3200 },
-    { nome: "Caixao Premium", descricao: "Caixao", qtde: 2, preco: 5200 },
-    { nome: "Caixao Premium", descricao: "Caixao", qtde: 2, preco: 5200 },
-    { nome: "Caixao Premium", descricao: "Caixao", qtde: 2, preco: 5200 },
-    { nome: "Caixao Premium", descricao: "Caixao", qtde: 2, preco: 5200 },
-    { nome: "Caixao Premium", descricao: "Caixao", qtde: 2, preco: 5200 },
-    { nome: "Caixao Premium", descricao: "Caixao", qtde: 2, preco: 5200 },
-    { nome: "Caixao Premium", descricao: "Caixao", qtde: 2, preco: 5200 },
-    { nome: "Caixao Premium", descricao: "Caixao", qtde: 2, preco: 5200 },
-]
+//var listaProdutos = [
+    //{ nome: "Caixao Simples", descricao: "Caixao", qtde: 5, preco: 1200 },
+    //{ nome: "Caixao Top", descricao: "Caixao", qtde: 5, preco: 3200 },
+    //{ nome: "Caixao Premium", descricao: "Caixao", qtde: 2, preco: 5200 },
+    //{ nome: "Caixao Premium", descricao: "Caixao", qtde: 2, preco: 5200 },
+    //{ nome: "Caixao Premium", descricao: "Caixao", qtde: 2, preco: 5200 },
+    //{ nome: "Caixao Premium", descricao: "Caixao", qtde: 2, preco: 5200 },
+    //{ nome: "Caixao Premium", descricao: "Caixao", qtde: 2, preco: 5200 },
+    //{ nome: "Caixao Premium", descricao: "Caixao", qtde: 2, preco: 5200 },
+    //{ nome: "Caixao Premium", descricao: "Caixao", qtde: 2, preco: 5200 },
+    //{ nome: "Caixao Premium", descricao: "Caixao", qtde: 2, preco: 5200 },
+//]
 
 // var listaDeProdutosDoBanco = fetch( )    // buscando direto da url da api
 
-let listaHTML = ""
-listaProdutos.forEach(produto => listaHTML = listaHTML + `<tr><td>1</td>
-    <td>${produto.nome}</td>
-    <td>${produto.descricao}</td>
-    <td>${produto.qtde}</td>
-    <td>R$ ${produto.preco}</td>
-    <td>
-        <button class="btn-edit">Editar</button>
-        <button class="btn-delete">Excluir</button>
-    </td></tr>` )
+//let listaHTML = ""
+//listaProdutos.forEach(produto => listaHTML = listaHTML + `<tr><td>1</td>
+    //<td>${produto.nome}</td>
+    //<td>${produto.descricao}</td>
+    //<td>${produto.qtde}</td>
+    //<td>R$ ${produto.preco}</td>
+    //<td>
+        //<button class="btn-edit">Editar</button>
+        //<button class="btn-delete">Excluir</button>
+    //</td></tr>` )
 
-tabelaHTML.innerHTML = listaHTML
+//tabelaHTML.innerHTML = listaHTML
+
+ // Função para carregar os produtos da API
+ async function carregarProdutos() {
+    try {
+        const response = await fetch('http://localhost:3000/itens');
+        const listaProdutos = await response.json();
+
+        let listaHTML = '';
+        listaProdutos.forEach(produto => {
+            listaHTML += `
+                <tr>
+                    <td>${produto.id}</td>
+                    <td>${produto.nome}</td>
+                    <td>${produto.descricao}</td>
+                    <td>${produto.quantidade}</td>
+                    <td>R$ ${produto.preco}</td>
+                    <td>
+                        <button class="btn-edit">Editar</button>
+                        <button class="btn-delete" onclick="deletarProduto(${produto.id})">Excluir</button>
+                    </td>
+                </tr>`;
+        });
+
+        document.getElementById("tabelaProdutos").innerHTML = listaHTML;
+    } catch (erro) {
+        console.error("Erro ao carregar produtos:", erro);
+    }
+}
+
+// Função para deletar um produto
+async function deletarProduto(id) {
+    try {
+        const response = await fetch(`http://localhost:3000/itens/${id}`, { method: 'DELETE' });
+        if (response.ok) {
+            alert('Produto deletado com sucesso!');
+            carregarProdutos();  // Recarrega a lista após deletar
+        } else {
+            alert('Erro ao deletar o produto.');
+        }
+    } catch (erro) {
+        console.error("Erro ao deletar produto:", erro);
+    }
+}
+
+// Carregar produtos ao iniciar a página
+carregarProdutos();
